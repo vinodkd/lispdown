@@ -1,0 +1,26 @@
+# Convert all "begin"s to (
+s/begin/(/g
+
+# Convert all "end"s to )
+s/end/)/g
+
+# Convert all [{}] to ()
+s/[\[\{]/(/g
+s/\]/)/g
+s/}/)/g
+
+# Convert all ,s to spaces
+s/,/ /g
+
+# Convert all :s to spaces
+s/:/ /g
+
+# Add braces to keywords in input that dont have them
+s/define/(define/g
+s/cond/(cond/g
+s/defun/(defun/g
+
+# case needs special handling because we have to close the previous case...
+s/case/)(/g
+
+s/else/(else/g

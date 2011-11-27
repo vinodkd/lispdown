@@ -1,0 +1,9 @@
+# ... and handle the extra ) that we introduce with this for the first case
+#/cond/N;s/cond(.*\n.*)case\)\(/cond\1(/
+/cond/N;s/cond\(.*\n.*\))(/cond\1(/
+
+# which can be explained as:
+# /cond/N  = find a line using the RE cond and append it to the pattern space with a \n
+# s/.../ = then find a string in the pspace that starts with cond, has chars, then a newline, more chars etc,
+#          and replace it with cond and the 1st collected chars.
+# this has the net effect of replacing the first )(
